@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tom's Web Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <div class="screensaver" id="screen">
+        <div class="shortcut shortcut-sailing draggable" class="ui-widget-content">
+            <img class="shortcut-img" src="assets/sailing-icon.png"></img>
+            <p class="shortcut-name">Sailing</p>
+        </div>
+        <div class="shortcut shortcut-music draggable" class="ui-widget-content">
+            <img class="shortcut-img" src="assets/music-icon.png"></img>
+            <p class="shortcut-name">Music</p>
+        </div>
+        <div class="shortcut shortcut-accomplishments draggable" class="ui-widget-content">
+            <img class="shortcut-img" src="assets/accomplishments-icon.png"></img>
+            <p class="shortcut-name">Accomplishments</p>
+        </div>
+        <div id="list-head" style="display:none; visibility:hidden; z-index:1"></div>
+    </div>
+
+    <div class="desktop-nav" style="z-index: 99999;">        
+        <button class="search" onclick="openNav()">
+            <img class="search-icon" src="assets/compass-icon.png"></img>
+            Start
+        </button>
+        <div>
+            <ul class="taskbar" id="taskbar">
+            </ul>
+        </div>
+        <div id="clock">
+            <div id='time'></div>
+            <div id='date'></div>
+        </div>
+        <button class="home" onclick="home()">
+            <img class="home-icon" src="assets/home-icon.png"></img>
+            <p style="font-size: smaller;">Home</p>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
