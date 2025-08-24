@@ -1,54 +1,26 @@
-/* @media only screen and (max-width: 600px) {
-    .screensaver {
-        background-image: url(assets/sailing-1.jpg);
-        background-size: cover;
-        height: 95vh;
-    }
+body {
+    display: grid;
+    grid-template-rows: auto max-content;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
 
-    .draggable { 
-        width: 7rem; 
-        height: 10rem; 
-        padding: 0.5em;
-        background-color: aliceblue; 
-    }
+p {
+    font-family: "Pixelated MS Sans Serif",Arial;
+}
 
-    .desktop-nav {
-        position: sticky;
-        bottom: 0px;
-        background-color: rgb(165, 165, 165);
-        border-bottom: solid rgb(0, 0, 0, 0.2);
-        border-width: 3px;
-        z-index: 1;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .2), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        width: 100%;
-        height: 5vh;
-        padding: 0.25vh;
-        display: grid;
-        grid-template-columns: max-content auto auto auto;
-        gap: .1rem;
-    }
-} */
-
+img {
+    max-width: 100%;
+	overflow: hidden;
+    width: auto;
+    height: auto;
+    margin: auto;
+}
 
 .screensaver {
     background-image: url(assets/sailing-2.jpg);
     background-size: cover;
-}
-
-.shortcut {
-    align-items: center;
-    text-align: center;
-    height: 6rem;
-    max-width: 4.5rem;
-    display: grid;
-    font-size: small;
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    cursor: pointer;
-}
-
-.shortcut:hover {
-	background-color: rgba(165,165,165,0.2);
 }
 
 .desktop-nav {
@@ -67,27 +39,22 @@
     gap: .1rem;
 }
 
-#clock {
-    background-color: silver;
-    box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #fff, inset 2px 2px grey, inset -2px -2px #dfdfdf;
-    font-family: "Pixelated MS Sans Serif",Arial;
-    padding-top: 0.3vh;
-    padding-bottom: 0.3vh;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: max-content;
-}
 
-body {
+
+.shortcut {
+    align-items: center;
+    text-align: center;
+    height: 6rem;
+    max-width: 4.5rem;
     display: grid;
-    grid-template-rows: auto max-content;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
+    font-size: small;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    cursor: pointer;
 }
 
-p {
-    font-family: "Pixelated MS Sans Serif",Arial;
+.shortcut:hover {
+	background-color: rgba(165,165,165,0.2);
 }
 
 .shortcut-name {
@@ -96,9 +63,17 @@ p {
     overflow: hidden;
 }
 
+.shortcut-img {
+    max-height: 80%;
+}
+
 .search {
     padding: 0 5px;
-    display: inline-block;
+    display: grid auto auto;
+}
+
+.search-icon {
+    height: 30px;
 }
 
 .home {
@@ -112,34 +87,28 @@ p {
     height: 25px;
 }
 
-.search-icon {
-    height: 35px;
-}
-
-.shortcut-img {
-	margin:auto;
-}
-
-img {
-	max-height: 80%;
-	overflow: hidden;
-}
-
 .window {
     display: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 30%;
     z-index: 1000;
     opacity: 0; /* Start hidden */
     pointer-events: none; /* Disable clicks when hidden */
     width: 40em;
+    height: 30em;
 }
 
 .window.active {
     display: block;
     opacity: 1; /* Visible when active */
     pointer-events: auto; /* Enable clicks when visible */
+}
+
+.window-body {
+    margin: 0;
+    height: calc(100% - 22.5px);
+    overflow-y: scroll;
 }
 
 .fullscreen {
@@ -159,6 +128,10 @@ button.close {
     background-color: silver;
 }
 
+/* --------------- /
+/ Taskbar styles   /
+/ --------------- */
+
 .taskbar {
     margin: 0;
     padding-inline-start: 5px;
@@ -166,23 +139,20 @@ button.close {
 
 .tb-icon {
     display: inline-block;
-    height: 42px;
-    padding: 0px 5px;
+    width: 42px;
+    padding: 2px 5px;
     position: relative;
+    overflow: visible;
+    margin-top: auto;
 }
 
 .tb-icon:hover {
 	background-color: rgba(0,0,0,0.15);
 }
 
-/* .thumbnail {
-    display: none;
-    position: absolute;
-    background-color: rgba(0,0,0,0.4);
-    z-index: 1000;
-    padding-inline-start: 0;
-    font-size: 1px;
-} */
+/* ------------------------- /
+/ Taskbar thumbnail styles   /
+/ ------------------------- */
 
 .thumbnail {
     display: inline-block;
@@ -199,29 +169,43 @@ button.close {
 
 #taskbar-sailing:hover .thumbnail-sailing {
     opacity: 100;
-    transform: translateY(-34px) scale(9.0);
+    transform: translateY(-33px) scale(9.0);
     pointer-events: auto;
+    z-index: 1000;
 }
 
 #taskbar-music:hover .thumbnail-music {
     opacity: 100;
-    transform: translateY(-34px) scale(10.0);
+    transform: translateY(-33px) scale(10.0);
     pointer-events: auto;
+    z-index: 1000;
 }
 
 #taskbar-accomplishments:hover .thumbnail-accomplishments {
     opacity: 100;
-    transform: translateY(-34px) scale(10.0);
+    transform: translateY(-33px) scale(10.0);
     pointer-events: auto;
+    z-index: 1000;
 }
 
 .tnimg {
+    width: 6px;
     height: 6px;
     padding: 0px 0.5px;
-    width: min-content;
     display: inline-block;
 }
 
 .tnimg:hover {
     background-color: rgba(149, 149, 149, 0.4);
+}
+
+#clock {
+    background-color: silver;
+    box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #fff, inset 2px 2px grey, inset -2px -2px #dfdfdf;
+    font-family: "Pixelated MS Sans Serif",Arial;
+    padding-top: 0.3vh;
+    padding-bottom: 0.3vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: max-content;
 }
