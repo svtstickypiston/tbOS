@@ -10,12 +10,21 @@ p {
     font-family: "Pixelated MS Sans Serif",Arial;
 }
 
+h2 {
+    font-family: "MS Sans Serif",Arial;
+}
+
 img {
     max-width: 100%;
 	overflow: hidden;
     width: auto;
     height: auto;
     margin: auto;
+}
+
+embed {
+    height: 100%;
+    width: 100%;
 }
 
 .screensaver {
@@ -108,7 +117,7 @@ img {
 .window-body {
     margin: 0;
     height: calc(100% - 22.5px);
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 .fullscreen {
@@ -126,6 +135,11 @@ img {
 
 button.close {
     background-color: silver;
+}
+
+.embed-page {
+    margin: 0.3rem;
+    overflow: show;
 }
 
 /* --------------- /

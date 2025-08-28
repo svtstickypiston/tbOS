@@ -106,7 +106,7 @@ function createWindow() {
 		closebutton.addEventListener('click', () => {
 			console.log("closed");
 			deleteWin(window.id);
-			window.remove();			
+			window.remove();		
 
 		    taskbarIcon = taskbar.querySelector(tbtag);
 		    if (taskbarIcon.dataset.count > 1) {
@@ -191,7 +191,54 @@ function createTn (winId) {
 $( function() {
     $( ".draggable" ).draggable({disabled:false});
     $( ".draggable" ).draggable( "option", "containment", "parent" );
+	$( ".draggable" ).draggable( "option", "grid", [ 72, 96 ] );
 } );
+
+function createAboutPg () {
+	screen = document.getElementById("screen");
+    screen.insertAdjacentHTML('beforeend', 
+      `
+      <div class="new-window" data-tbtag="about">
+          <div class="title-bar">
+              <div class="title-bar-text">Welcome</div>
+              <div class="title-bar-controls">
+                  <button aria-label="Any Text" class="new-minimize"></button>
+                  <button aria-label="Any Text" class="new-maximize"></button>
+                  <button aria-label="Any Text" class="new-close"></button>
+              </div>
+          </div>
+		  <div class="window-body">
+			<embed src="about.html">
+		  </div>
+      </div>
+      `
+    );
+	
+	if (taskbar.querySelector("#taskbar-about") == null) {
+		taskbar.insertAdjacentHTML('beforeend',
+			`
+			<li id="taskbar-about" class="tb-icon">
+				<ul class="thumbnail thumbnail-about">
+					<li class="new-tnimg">
+						<img style="margin: auto" src="assets/tom-face-cropped.jpg"></img>
+					</li>
+				</ul>
+				<img src="assets/tom-face-cropped.jpg"></img>
+			</li>
+			`
+		);
+		document.getElementById("taskbar-about").dataset.count = 1;
+	} else {
+		tnaccomplishments = document.getElementById('taskbar-about').querySelector('.thumbnail-about');
+		tnaccomplishments.insertAdjacentHTML('beforeend',
+			`<li class="new-tnimg">
+				<img style="margin: auto" src="assets/tom-face-cropped.jpg"></img>
+			</li>`
+		);
+		document.getElementById("taskbar-about").dataset.count = parseInt(document.getElementById("taskbar-about").dataset.count) + 1;
+	}
+	createWindow();
+}
 
 
 // create the link buttons
@@ -210,16 +257,7 @@ document.querySelectorAll('.shortcut-sailing').forEach(shortcut => {
               </div>
           </div>
 		  <div class="window-body">
-			<p>
-				I have been sailing dinghies for around 8 years now, from my humble beginnings in a topper on the river Trent to teaching sailing with Nielson in Sardinia! I started out with Nottingham Sailing club, and was a slightly unenthusiastic junior for several years before my dad also got involved in sailing - resulting in him buying a Laser for the two of us. This introduced me to the world of more advanced sailing, and I started to get involved in racing at the club until going to university in 2022. 
-			</p>
-			<p>
-				For 2 years I mostly dropped sailing except for the occasional summer excursion, before deciding to pick it back up again in 2024 when I got my Dinghy Instructor qualification and began teaching sailing, as well as participating in university sailing and team racing. 
-			</p>
-			<p>
-				In summer 2025 I have gone to Italy to teach sailing on two separate occasions; firstly, on a short trip to Monte Argentario to work at Scuola Vela Argentario. Here, I learned to rig and sail a wider variety of boats, as well as learning about working and living in Italy. Then I returned to Italy, this time to work at Nielson's Baia dei Mori resort in Sardinia, where I am currently employed at the time of writing.
-			</p>
-			<img src="assets/sailing-helm.jpg"></img>
+			<embed src="sailing.html">
 		  </div>
       </div>
       `
@@ -342,5 +380,12 @@ document.querySelectorAll('.shortcut-accomplishments').forEach(shortcut => {
   });
 });
 
+document.querySelectorAll('.shortcut-about').forEach(shortcut => {
+  shortcut.addEventListener('dblclick', () => {
+    createAboutPg();
+  });
+});
+
 setClock
 setInterval(setClock, 1000);
+createAboutPg();
