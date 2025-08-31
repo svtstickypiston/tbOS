@@ -217,13 +217,13 @@ function createAboutPg () {
 	if (taskbar.querySelector("#taskbar-about") == null) {
 		taskbar.insertAdjacentHTML('beforeend',
 			`
-			<li id="taskbar-about" class="tb-icon">
+			<li id="taskbar-about" class="tb-icon-wrapper">
 				<ul class="thumbnail thumbnail-about">
 					<li class="new-tnimg">
 						<img style="margin: auto" src="assets/tom-face-cropped.jpg"></img>
 					</li>
 				</ul>
-				<img src="assets/tom-face-cropped.jpg"></img>
+				<img class="tb-icon" src="assets/tom-face-cropped.jpg"></img>
 			</li>
 			`
 		);
@@ -266,13 +266,13 @@ document.querySelectorAll('.shortcut-sailing').forEach(shortcut => {
 	if (taskbar.querySelector("#taskbar-sailing") == null) {
 		taskbar.insertAdjacentHTML('beforeend',
 			`
-			<li id="taskbar-sailing" class="tb-icon">
+			<li id="taskbar-sailing" class="tb-icon-wrapper">
 				<ul class="thumbnail thumbnail-sailing">
 					<li class="new-tnimg">
 						<img style="margin: auto" src="assets/sailing-icon.png"></img>
 					</li>
 				</ul>
-				<img src="assets/sailing-icon.png"></img>
+				<img class="tb-icon" src="assets/sailing-icon.png"></img>
 			</li>
 			`
 		);
@@ -311,13 +311,13 @@ document.querySelectorAll('.shortcut-music').forEach(shortcut => {
 	if (taskbar.querySelector("#taskbar-music") == null) {
 		taskbar.insertAdjacentHTML('beforeend',
 			`
-			<li id="taskbar-music" class="tb-icon">
+			<li id="taskbar-music" class="tb-icon-wrapper">
 				<ul class="thumbnail thumbnail-music">
 					<li class="new-tnimg">
 						<img style="margin: auto" src="assets/music-icon.png"></img>
 					</li>
 				</ul>
-				<img src="assets/music-icon.png"></img>
+				<img class="tb-icon" src="assets/music-icon.png"></img>
 			</li>
 			`
 		);
@@ -349,6 +349,9 @@ document.querySelectorAll('.shortcut-accomplishments').forEach(shortcut => {
                   <button aria-label="Any Text" class="new-close"></button>
               </div>
           </div>
+		  <div class="window-body">
+			<embed src="accomplishments.html">
+		  </div>
       </div>
       `
     );
@@ -356,13 +359,13 @@ document.querySelectorAll('.shortcut-accomplishments').forEach(shortcut => {
 	if (taskbar.querySelector("#taskbar-accomplishments") == null) {
 		taskbar.insertAdjacentHTML('beforeend',
 			`
-			<li id="taskbar-accomplishments" class="tb-icon">
+			<li id="taskbar-accomplishments" class="tb-icon-wrapper">
 				<ul class="thumbnail thumbnail-accomplishments">
 					<li class="new-tnimg">
 						<img style="margin: auto" src="assets/accomplishments-icon.png"></img>
 					</li>
 				</ul>
-				<img src="assets/accomplishments-icon.png"></img>
+				<img class="tb-icon" src="assets/accomplishments-icon.png"></img>
 			</li>
 			`
 		);

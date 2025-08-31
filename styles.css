@@ -27,6 +27,11 @@ embed {
     width: 100%;
 }
 
+.window-page-body {
+    overflow-y: scroll; 
+    display: block;
+}
+
 .screensaver {
     background-image: url(assets/sailing-2.jpg);
     background-size: cover;
@@ -38,13 +43,13 @@ embed {
     background-color: rgb(165, 165, 165);
     border-bottom: solid rgb(0, 0, 0, 0.2);
     border-width: 3px;
-    z-index: 1;
+    z-index: 99999;
     box-shadow: inset 2px 2px grey;
     width: 100%;
     height: 46px;
-    padding: 3px;
+    /* padding: 3px; */
     display: grid;
-    grid-template-columns: max-content auto max-content min-content;
+    grid-template-columns: max-content auto max-content max-content min-content;
     gap: .1rem;
 }
 
@@ -77,23 +82,26 @@ embed {
 }
 
 .search {
+    margin: 3px;
     padding: 0 5px;
-    display: grid auto auto;
+    height: 40px;
 }
 
 .search-icon {
-    height: 30px;
+    height: 25px;
 }
 
 .home {
+    height: 40px;
+    margin: 3px;
     min-width: 40px;
-    padding: 2px;
+    padding: 0px;
     align-items: center;
     background-color: whitesmoke;
 }
 
 .home-icon {
-    height: 25px;
+    height: 23px;
 }
 
 .window {
@@ -142,6 +150,38 @@ button.close {
     overflow: show;
 }
 
+.socials {
+    margin: 3px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 0;
+    margin-left: 50%;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.dropdown-content a {
+    padding: 8px 8px;
+    height: 40px;
+    width: 40px;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    transform: translate(-50%,-100%);
+}
 /* --------------- /
 / Taskbar styles   /
 / --------------- */
@@ -149,19 +189,23 @@ button.close {
 .taskbar {
     margin: 0;
     padding-inline-start: 5px;
+    height: 46px;
+}
+
+.tb-icon-wrapper {
+    display: inline-block;
+    padding-inline: 5px;
+    height: 46px;
+    overflow: show;
+}
+
+.tb-icon-wrapper:hover {
+	background-color: rgba(0,0,0,0.15);
 }
 
 .tb-icon {
-    display: inline-block;
-    width: 42px;
-    padding: 2px 5px;
-    position: relative;
-    overflow: visible;
+    max-height: 100%;
     margin-top: auto;
-}
-
-.tb-icon:hover {
-	background-color: rgba(0,0,0,0.15);
 }
 
 /* ------------------------- /
@@ -176,28 +220,36 @@ button.close {
     z-index: -1;
     padding-inline-start: 0;
     font-size: 1px;
-    transform: translateY(0px) scale(9.0);
+    transform: translateY(0px) translateX(-50%) scale(9.0);
     transition: all 0.6s;
     pointer-events: none;
 }
 
 #taskbar-sailing:hover .thumbnail-sailing {
     opacity: 100;
-    transform: translateY(-33px) scale(9.0);
+    transform: translateY(-523%) scale(9.0);
     pointer-events: auto;
     z-index: 1000;
 }
 
 #taskbar-music:hover .thumbnail-music {
     opacity: 100;
-    transform: translateY(-33px) scale(10.0);
+    transform: translateY(-523%) scale(10.0);
     pointer-events: auto;
     z-index: 1000;
 }
 
 #taskbar-accomplishments:hover .thumbnail-accomplishments {
     opacity: 100;
-    transform: translateY(-33px) scale(10.0);
+    transform: translateY(-523%) scale(10.0);
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+
+#taskbar-about:hover .thumbnail-about {
+    opacity: 100;
+    transform: translateY(-523%) scale(10.0);
     pointer-events: auto;
     z-index: 1000;
 }
@@ -214,11 +266,13 @@ button.close {
 }
 
 #clock {
+    height: 40px;
+    margin: 3px;
     background-color: silver;
     box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #fff, inset 2px 2px grey, inset -2px -2px #dfdfdf;
     font-family: "Pixelated MS Sans Serif",Arial;
-    padding-top: 0.3vh;
-    padding-bottom: 0.3vh;
+    padding-top: 2px;
+    padding-bottom: 2px;
     padding-left: 1rem;
     padding-right: 1rem;
     width: max-content;
