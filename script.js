@@ -33,11 +33,9 @@ function setClock() {
 
 function updateZInd(winId, x) {
 	const window = document.getElementById(winId);
-	console.log(winId);
 	window.style.zIndex = x;
 
 	if (window.dataset.next != "null") {
-		console.log('index: '+x+" id: "+winId);
 		updateZInd(window.dataset.next, x+1);
 	}
 	else {
@@ -55,8 +53,6 @@ function addToTop(winId) {
 
 	previousWindow.dataset.next = winId;
 	topWindow = winId;
-
-	console.log("top window:"+topWindow);
 }
 
 function deleteWin(winId) {
@@ -69,7 +65,6 @@ function deleteWin(winId) {
 		updateZInd(nextWindow.id, parseInt(window.style.zIndex));
 	}
 	else {
-		console.log("changing top window");
 		topWindow = previousWindow.id;
 		previousWindow.dataset.next = "null";
 	}
@@ -84,11 +79,10 @@ function createWindow() {
 		$(window).draggable({disabled:false});
 		$(window).draggable( "option", "containment", "parent" );
 		
-		window.id = Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9*Math.pow(10, 12)).toString(36);
+		if(!window.hasAttribute("id")){ window.id = Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9*Math.pow(10, 12)).toString(36); }
 		addToTop(window.id);
 
 		window.addEventListener('mousedown', () => {
-			console.log('clicked');
 			deleteWin(window.id);
 		    addToTop(window.id);
 		});
@@ -104,7 +98,6 @@ function createWindow() {
 		closebutton.classList.add("close");
 		
 		closebutton.addEventListener('click', () => {
-			console.log("closed");
 			deleteWin(window.id);
 			window.remove();		
 
@@ -194,13 +187,13 @@ $( function() {
 	$( ".draggable" ).draggable( "option", "grid", [ 72, 96 ] );
 } );
 
-function createAboutPg () {
+function createStartPg () {
 	screen = document.getElementById("screen");
     screen.insertAdjacentHTML('beforeend', 
       `
-      <div class="new-window" data-tbtag="about">
+      <div class="new-window" data-tbtag="start">
           <div class="title-bar">
-              <div class="title-bar-text">Welcome</div>
+              <div class="title-bar-text">Start</div>
               <div class="title-bar-controls">
                   <button aria-label="Any Text" class="new-minimize"></button>
                   <button aria-label="Any Text" class="new-maximize"></button>
@@ -208,17 +201,17 @@ function createAboutPg () {
               </div>
           </div>
 		  <div class="window-body">
-			<embed src="about.html">
+			<embed src="start.html">
 		  </div>
       </div>
       `
     );
 	
-	if (taskbar.querySelector("#taskbar-about") == null) {
+	if (taskbar.querySelector("#taskbar-start") == null) {
 		taskbar.insertAdjacentHTML('beforeend',
 			`
-			<li id="taskbar-about" class="tb-icon-wrapper">
-				<ul class="thumbnail thumbnail-about">
+			<li id="taskbar-start" class="tb-icon-wrapper">
+				<ul class="thumbnail thumbnail-start">
 					<li class="new-tnimg">
 						<img style="margin: auto" src="assets/tom-face-cropped.jpg"></img>
 					</li>
@@ -238,6 +231,16 @@ function createAboutPg () {
 		document.getElementById("taskbar-about").dataset.count = parseInt(document.getElementById("taskbar-about").dataset.count) + 1;
 	}
 	createWindow();
+}
+
+function openStart() {
+	deleteWin("start");
+	addToTop("start");
+
+	const window=document.getElementById("start");
+	if (!window.classList.contains("active")) {
+		window.classList.add("active");
+	}
 }
 
 
@@ -391,4 +394,4 @@ document.querySelectorAll('.shortcut-about').forEach(shortcut => {
 
 setClock
 setInterval(setClock, 1000);
-createAboutPg();
+createWindow();

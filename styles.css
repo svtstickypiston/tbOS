@@ -234,14 +234,14 @@ button.close {
 
 #taskbar-music:hover .thumbnail-music {
     opacity: 100;
-    transform: translateY(-523%) scale(10.0);
+    transform: translateY(-523%) scale(9.0);
     pointer-events: auto;
     z-index: 1000;
 }
 
 #taskbar-accomplishments:hover .thumbnail-accomplishments {
     opacity: 100;
-    transform: translateY(-523%) scale(10.0);
+    transform: translateY(-523%) scale(9.0);
     pointer-events: auto;
     z-index: 1000;
 }
@@ -249,7 +249,7 @@ button.close {
 
 #taskbar-about:hover .thumbnail-about {
     opacity: 100;
-    transform: translateY(-523%) scale(10.0);
+    transform: translateY(-523%) scale(9.0);
     pointer-events: auto;
     z-index: 1000;
 }
@@ -263,6 +263,15 @@ button.close {
 
 .tnimg:hover {
     background-color: rgba(149, 149, 149, 0.4);
+}
+
+.tab {
+    cursor: pointer;
+}
+
+.tabpanel {
+    display: none;
+    box-shadow: inset 0px 2px grey;
 }
 
 #clock {

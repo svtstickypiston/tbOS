@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +12,10 @@
 </head>
 
 <body>
+    <!-- Desktop area to move around windows and other draggable items -->
     <div class="screensaver" id="screen">
+
+        <!-- Shortcuts -->
         <div class="shortcut shortcut-about draggable" class="ui-widget-content">
             <img class="shortcut-img" src="assets/tom-face-cropped.jpg"></img>
             <p class="shortcut-name">About me!</p>
@@ -30,18 +32,71 @@
             <img class="shortcut-img" src="assets/accomplishments-icon.png"></img>
             <p class="shortcut-name">Accomplishments</p>
         </div>
+
+        <!-- Head that can't be removed to make it easier to traverse the linked list for the window manager -->
         <div id="list-head" style="display:none; visibility:hidden; z-index:1"></div>
+
+        <!-- Start window is constant, can only have one and can only minimise not close -->
+        <div id="start" class="new-window" style="z-index:1">
+            <div class="title-bar">
+                <div class="title-bar-text">Start</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Any Text" class="new-maximize"></button>
+                    <button aria-label="Any Text" class="new-minimize close"></button>
+                </div>
+            </div>
+            <div class="window-body" style="overflow-y: scroll;">
+                <div class="embed-page">
+                    <menu role="tablist">
+                        <li class="tab" role="tab" id="welcome-tab"><a>Welcome</a></li>
+                        <li class="tab" role="tab" id="nav-tab"><a>Navigation</a></li>
+                        <li class="tab" role="tab" id="gallery-tab"><a>Gallery</a></li>
+                    </menu>
+                    
+                    <div id="welcome" class="tabpanel" role="tabpanel">
+                        <h2>Welcome to my website!</h2>
+                        <p>
+                            Hi! My name is Thomas Brett, and I am a software developer, musician and sailor from Nottingham, England.
+                        </p>
+                        <p>
+                            This is my space to present my skills and achievements, as well as document some of the things I have been up to! Different parts of my life are organised into different sections, which you can access by clicking on the shortcuts on the homescreen - just as you would on a desktop environment!
+                        </p>
+                        <p>
+                            If you are an employer or are interested in my software development skills, I suggest checking out the 'Accomplishments', and 'Projects' sections. If you are just interested in my life, the 'Sailing' and 'Music' sections might be worth a visit!
+                        </p>
+                        <img src="assets/tom-face-cropped.jpg"></img>
+                        <p>
+                            Thanks for visiting! You can close this window at any time :)
+                        </p>
+                    </div>
+                    <div id="navigation" class="tabpanel" role="tabpanel">
+                        <h2>Navigator</h2>
+                    </div>
+                    <div id="gallery" class="tabpanel" role="tabpanel">
+                        <h2>My pictures!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="desktop-nav">        
-        <button class="search" onclick="openNav()">
+    <!-- Taskbar where taskbar icons, thumbnails, and other widgets can be accessed at all times -->
+    <div class="desktop-nav">
+
+        <!-- Start button opens the start window to help the user get familiar with the website and offer an
+        alternative means of navigation -->
+        <button class="search" onclick="openStart()">
             <img class="search-icon" src="assets/compass-icon.png"></img>
             Start
         </button>
+
+        <!-- Taskbar area reserved for taskbar icons, which will come up when windows (besides the 'Start' window) are opened -->
         <div>
             <ul class="taskbar" id="taskbar">
             </ul>
         </div>
+
+        <!-- Quick access to social links -->
         <div class="dropdown socials">
                 <ul class="dropdown-content socials-content">
                     <li class="inline">
@@ -67,10 +122,14 @@
                 </ul>
             Socials
         </div>
+
+        <!-- Clock because why not -->
         <div id="clock">
             <div id='time'></div>
             <div id='date'></div>
         </div>
+
+        <!-- Home button to minimise all windows -->
         <button class="home" onclick="home()">
             <img class="home-icon" src="assets/home-icon.png"></img>
             <p style="font-size: smaller;">Home</p>
@@ -78,5 +137,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="start_script.js"></script>
 </body>
 </html>
