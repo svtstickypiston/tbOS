@@ -28,9 +28,13 @@
             <img class="shortcut-img" src="assets/music-icon.png"></img>
             <p class="shortcut-name">Music</p>
         </div>
-        <div class="shortcut shortcut-accomplishments draggable" class="ui-widget-content">
-            <img class="shortcut-img" src="assets/accomplishments-icon.png"></img>
-            <p class="shortcut-name">Accomplishments</p>
+        <div class="shortcut shortcut-projects draggable" class="ui-widget-content">
+            <img class="shortcut-img" src="assets/projects-icon.png"></img>
+            <p class="shortcut-name">Projects</p>
+        </div>
+        <div class="shortcut shortcut-work draggable" class="ui-widget-content">
+            <img class="shortcut-img" src="assets/work-icon.png"></img>
+            <p class="shortcut-name">Work</p>
         </div>
 
         <!-- Head that can't be removed to make it easier to traverse the linked list for the window manager -->
@@ -50,7 +54,7 @@
                     <menu role="tablist">
                         <li class="tab" role="tab" id="welcome-tab"><a>Welcome</a></li>
                         <li class="tab" role="tab" id="nav-tab"><a>Navigation</a></li>
-                        <li class="tab" role="tab" id="gallery-tab"><a>Gallery</a></li>
+                        <li class="tab" role="tab" id="contact-tab"><a>Contact</a></li>
                     </menu>
                     
                     <div id="welcome" class="tabpanel" role="tabpanel">
@@ -69,11 +73,47 @@
                             Thanks for visiting! You can close this window at any time :)
                         </p>
                     </div>
+
+                    <!-- Navigation page- include buttons to access other parts of the website easily -->
                     <div id="navigation" class="tabpanel" role="tabpanel">
                         <h2>Navigator</h2>
+                        <button onclick="sailingWindow()">Sailing</button>
+                        <button onclick="musicWindow()">Music</button>
+                        <button onclick="accomplishmentsWindow()">Accomplishments</button>
                     </div>
-                    <div id="gallery" class="tabpanel" role="tabpanel">
-                        <h2>My pictures!</h2>
+
+                    <!-- Contact page- include links to socials -->
+                    <div id="contact" class="tabpanel" role="tabpanel">
+                        <h2>Let's get in touch!</h2>
+                        <ul>
+                            <li class="inline">
+                                <a href="mailto:tombrett1628@gmail.com">
+                                    <img class="small" src="assets/email-icon.png">
+                                    <p class="inline"><b>Email</b>: tombrett1628@gmail.com</p>
+                                </a>
+                            </li>
+                            <br>
+                            <li class="inline">
+                                <a href="https://www.linkedin.com/in/thomas-brett-b9b37923a/" target="_blank">
+                                    <img class="small" src="assets/linkedin-icon.png">
+                                    <p class="inline"><b>Linkedin</b>: thomas-brett-b9b37923a</p>
+                                </a>                                
+                            </li>
+                            <br>
+                            <li class="inline">
+                                <a href="https://www.instagram.com/tomb0129/" target="_blank">
+                                    <img class="small" src="assets/instagram-icon.png">
+                                    <p class="inline"><b>Instagram</b>: @tomb0129</p>
+                                </a>                                
+                            </li>
+                            <br>
+                            <li class="inline">
+                                <a href="https://github.com/svtstickypiston" target="_blank">
+                                    <img class="small" src="assets/github-icon.png">
+                                    <p class="inline"><b>GitHub</b>: svtstickypiston</p>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

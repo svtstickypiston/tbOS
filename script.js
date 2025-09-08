@@ -187,52 +187,6 @@ $( function() {
 	$( ".draggable" ).draggable( "option", "grid", [ 72, 96 ] );
 } );
 
-function createStartPg () {
-	screen = document.getElementById("screen");
-    screen.insertAdjacentHTML('beforeend', 
-      `
-      <div class="new-window" data-tbtag="start">
-          <div class="title-bar">
-              <div class="title-bar-text">Start</div>
-              <div class="title-bar-controls">
-                  <button aria-label="Any Text" class="new-minimize"></button>
-                  <button aria-label="Any Text" class="new-maximize"></button>
-                  <button aria-label="Any Text" class="new-close"></button>
-              </div>
-          </div>
-		  <div class="window-body">
-			<embed src="start.html">
-		  </div>
-      </div>
-      `
-    );
-	
-	if (taskbar.querySelector("#taskbar-start") == null) {
-		taskbar.insertAdjacentHTML('beforeend',
-			`
-			<li id="taskbar-start" class="tb-icon-wrapper">
-				<ul class="thumbnail thumbnail-start">
-					<li class="new-tnimg">
-						<img style="margin: auto" src="assets/tom-face-cropped.jpg"></img>
-					</li>
-				</ul>
-				<img class="tb-icon" src="assets/tom-face-cropped.jpg"></img>
-			</li>
-			`
-		);
-		document.getElementById("taskbar-about").dataset.count = 1;
-	} else {
-		tnaccomplishments = document.getElementById('taskbar-about').querySelector('.thumbnail-about');
-		tnaccomplishments.insertAdjacentHTML('beforeend',
-			`<li class="new-tnimg">
-				<img style="margin: auto" src="assets/tom-face-cropped.jpg"></img>
-			</li>`
-		);
-		document.getElementById("taskbar-about").dataset.count = parseInt(document.getElementById("taskbar-about").dataset.count) + 1;
-	}
-	createWindow();
-}
-
 function openStart() {
 	deleteWin("start");
 	addToTop("start");
@@ -243,11 +197,34 @@ function openStart() {
 	}
 }
 
+function createTaskbar(tbtag) {
+	if (taskbar.querySelector("#taskbar-" + tbtag) == null) {
+		taskbar.insertAdjacentHTML('beforeend',
+			`
+			<li id="taskbar-${tbtag}" class="tb-icon-wrapper">
+				<ul class="thumbnail thumbnail-${tbtag}">
+					<li class="new-tnimg">
+						<img style="margin: auto" src="assets/${tbtag}-icon.png"></img>
+					</li>
+				</ul>
+				<img class="tb-icon" src="assets/${tbtag}-icon.png"></img>
+			</li>
+			`
+		);
+		document.getElementById("taskbar-" + tbtag).dataset.count = 1;
+	} else {
+		tnsailing = document.getElementById('taskbar-' + tbtag).querySelector('.thumbnail-' + tbtag);
+		tnsailing.insertAdjacentHTML('beforeend',
+			`<li class="new-tnimg">
+				<img style="margin: auto" src="assets/${tbtag}-icon.png"></img>
+			</li>`
+		);
+		document.getElementById("taskbar-" + tbtag).dataset.count = parseInt(document.getElementById("taskbar-" + tbtag).dataset.count) + 1;
+	}
+}
 
-// create the link buttons
-document.querySelectorAll('.shortcut-sailing').forEach(shortcut => {
-  shortcut.addEventListener('dblclick', () => {
-    screen = document.getElementById("screen");
+function sailingWindow() {
+	screen = document.getElementById("screen");
     screen.insertAdjacentHTML('beforeend', 
       `
       <div class="new-window" data-tbtag="sailing">
@@ -266,36 +243,12 @@ document.querySelectorAll('.shortcut-sailing').forEach(shortcut => {
       `
     );
 	
-	if (taskbar.querySelector("#taskbar-sailing") == null) {
-		taskbar.insertAdjacentHTML('beforeend',
-			`
-			<li id="taskbar-sailing" class="tb-icon-wrapper">
-				<ul class="thumbnail thumbnail-sailing">
-					<li class="new-tnimg">
-						<img style="margin: auto" src="assets/sailing-icon.png"></img>
-					</li>
-				</ul>
-				<img class="tb-icon" src="assets/sailing-icon.png"></img>
-			</li>
-			`
-		);
-		document.getElementById("taskbar-sailing").dataset.count = 1;
-	} else {
-		tnsailing = document.getElementById('taskbar-sailing').querySelector('.thumbnail-sailing');
-		tnsailing.insertAdjacentHTML('beforeend',
-			`<li class="new-tnimg">
-				<img style="margin: auto" src="assets/sailing-icon.png"></img>
-			</li>`
-		);
-		document.getElementById("taskbar-sailing").dataset.count = parseInt(document.getElementById("taskbar-sailing").dataset.count) + 1;
-	}
+	createTaskbar("sailing");
 	createWindow();
-  });
-});
+}
 
-document.querySelectorAll('.shortcut-music').forEach(shortcut => {
-  shortcut.addEventListener('dblclick', () => {
-    screen = document.getElementById("screen");
+function musicWindow() {
+	screen = document.getElementById("screen");
     screen.insertAdjacentHTML('beforeend', 
       `
       <div class="new-window" data-tbtag="music">
@@ -311,36 +264,12 @@ document.querySelectorAll('.shortcut-music').forEach(shortcut => {
       `
     );
 
-	if (taskbar.querySelector("#taskbar-music") == null) {
-		taskbar.insertAdjacentHTML('beforeend',
-			`
-			<li id="taskbar-music" class="tb-icon-wrapper">
-				<ul class="thumbnail thumbnail-music">
-					<li class="new-tnimg">
-						<img style="margin: auto" src="assets/music-icon.png"></img>
-					</li>
-				</ul>
-				<img class="tb-icon" src="assets/music-icon.png"></img>
-			</li>
-			`
-		);
-		document.getElementById("taskbar-music").dataset.count = 1;
-	} else {
-		tnmusic = document.getElementById('taskbar-music').querySelector('.thumbnail-music');
-		tnmusic.insertAdjacentHTML('beforeend',
-			`<li class="new-tnimg">
-				<img style="margin: auto" src="assets/music-icon.png"></img>
-			</li>`
-		);
-		document.getElementById("taskbar-music").dataset.count = parseInt(document.getElementById("taskbar-music").dataset.count) + 1;
-	}
+	createTaskbar("music");
 	createWindow();
-  });
-});
+}
 
-document.querySelectorAll('.shortcut-accomplishments').forEach(shortcut => {
-  shortcut.addEventListener('dblclick', () => {
-    screen = document.getElementById("screen");
+function accomplishmentsWindow() {
+	screen = document.getElementById("screen");
     screen.insertAdjacentHTML('beforeend', 
       `
       <div class="new-window" data-tbtag="accomplishments">
@@ -359,30 +288,86 @@ document.querySelectorAll('.shortcut-accomplishments').forEach(shortcut => {
       `
     );
 	
-	if (taskbar.querySelector("#taskbar-accomplishments") == null) {
-		taskbar.insertAdjacentHTML('beforeend',
-			`
-			<li id="taskbar-accomplishments" class="tb-icon-wrapper">
-				<ul class="thumbnail thumbnail-accomplishments">
-					<li class="new-tnimg">
-						<img style="margin: auto" src="assets/accomplishments-icon.png"></img>
-					</li>
-				</ul>
-				<img class="tb-icon" src="assets/accomplishments-icon.png"></img>
-			</li>
-			`
-		);
-		document.getElementById("taskbar-accomplishments").dataset.count = 1;
-	} else {
-		tnaccomplishments = document.getElementById('taskbar-accomplishments').querySelector('.thumbnail-accomplishments');
-		tnaccomplishments.insertAdjacentHTML('beforeend',
-			`<li class="new-tnimg">
-				<img style="margin: auto" src="assets/accomplishments-icon.png"></img>
-			</li>`
-		);
-		document.getElementById("taskbar-accomplishments").dataset.count = parseInt(document.getElementById("taskbar-accomplishments").dataset.count) + 1;
-	}
+	createTaskbar("accomplishments");
 	createWindow();
+}
+
+function projectsWindow() {
+	screen = document.getElementById("screen");
+    screen.insertAdjacentHTML('beforeend', 
+      `
+      <div class="new-window" data-tbtag="projects">
+          <div class="title-bar">
+              <div class="title-bar-text">Projects</div>
+              <div class="title-bar-controls">
+                  <button aria-label="Any Text" class="new-minimize"></button>
+                  <button aria-label="Any Text" class="new-maximize"></button>
+                  <button aria-label="Any Text" class="new-close"></button>
+              </div>
+          </div>
+		  <div class="window-body">
+			<embed src="projects.html">
+		  </div>
+      </div>
+      `
+    );
+	
+	createTaskbar("projects");
+	createWindow();
+}
+
+function workWindow() {
+	screen = document.getElementById("screen");
+    screen.insertAdjacentHTML('beforeend', 
+      `
+      <div class="new-window" data-tbtag="work">
+          <div class="title-bar">
+              <div class="title-bar-text">Work</div>
+              <div class="title-bar-controls">
+                  <button aria-label="Any Text" class="new-minimize"></button>
+                  <button aria-label="Any Text" class="new-maximize"></button>
+                  <button aria-label="Any Text" class="new-close"></button>
+              </div>
+          </div>
+		  <div class="window-body">
+			<embed src="work.html">
+		  </div>
+      </div>
+      `
+    );
+	
+	createTaskbar("work");
+	createWindow();
+}
+
+// create the link buttons
+document.querySelectorAll('.shortcut-sailing').forEach(shortcut => {
+  shortcut.addEventListener('dblclick', () => {
+    sailingWindow();
+  });
+});
+
+document.querySelectorAll('.shortcut-music').forEach(shortcut => {
+  shortcut.addEventListener('dblclick', () => {
+    musicWindow();
+  });
+});
+
+document.querySelectorAll('.shortcut-accomplishments').forEach(shortcut => {
+  shortcut.addEventListener('dblclick', () => {
+    accomplishmentsWindow();
+  });
+});
+
+document.querySelectorAll('.shortcut-projects').forEach(shortcut => {
+  shortcut.addEventListener('dblclick', () => {
+    projectsWindow();
+  });
+});
+
+document.querySelectorAll('.shortcut-work').forEach(shortcut => {
+  shortcut.addEventListener('dblclick', () => {
+    workWindow();
   });
 });
 

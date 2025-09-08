@@ -22,11 +22,11 @@ document.getElementById("nav-tab").addEventListener('click', () => {
     document.getElementById("nav-tab").setAttribute("aria-selected", true);
 });
 
-document.getElementById("gallery-tab").addEventListener('click', () => {
+document.getElementById("contact-tab").addEventListener('click', () => {
     hideAll();
 
-    document.getElementById("gallery").style.display = "block";
-    document.getElementById("gallery-tab").setAttribute("aria-selected", true);
+    document.getElementById("contact").style.display = "block";
+    document.getElementById("contact-tab").setAttribute("aria-selected", true);
 });
 
 document.getElementById("welcome-tab").click()
