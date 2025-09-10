@@ -254,6 +254,20 @@ button.close {
     z-index: 1000;
 }
 
+#taskbar-projects:hover .thumbnail-projects {
+    opacity: 100;
+    transform: translateY(-523%) scale(9.0);
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+#taskbar-work:hover .thumbnail-work {
+    opacity: 100;
+    transform: translateY(-523%) scale(9.0);
+    pointer-events: auto;
+    z-index: 1000;
+}
+
 .tnimg {
     width: 6px;
     height: 6px;

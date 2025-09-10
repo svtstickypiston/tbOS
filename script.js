@@ -340,6 +340,22 @@ function workWindow() {
 	createWindow();
 }
 
+function hideAll () {
+    document.querySelectorAll('div[role="tabpanel"]').forEach(tabpanel=>{
+        tabpanel.style.display = "none";
+    });
+
+    document.querySelectorAll('.tab').forEach(tab=>{
+        tab.setAttribute("aria-selected", false);
+    });
+}
+
+function clearScreen() {
+	document.querySelectorAll('.window').forEach(window => {
+	  window.classList.remove('active');
+	});
+}
+
 // create the link buttons
 document.querySelectorAll('.shortcut-sailing').forEach(shortcut => {
   shortcut.addEventListener('dblclick', () => {

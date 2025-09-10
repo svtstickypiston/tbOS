@@ -1,13 +1,3 @@
-function hideAll () {
-    document.querySelectorAll('div[role="tabpanel"]').forEach(tabpanel=>{
-        tabpanel.style.display = "none";
-    });
-
-    document.querySelectorAll('.tab').forEach(tab=>{
-        tab.setAttribute("aria-selected", false);
-    });
-}
-
 document.getElementById("welcome-tab").addEventListener('click', () => {
     hideAll();
 
