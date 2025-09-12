@@ -40,6 +40,9 @@ function updateZInd(winId, x) {
 	}
 	else {
 		topWindow = winId;
+
+		console.log(topWindow);
+		console.log(document.getElementById(topWindow).style.zIndex)
 	}
 }
 
@@ -53,6 +56,9 @@ function addToTop(winId) {
 
 	previousWindow.dataset.next = winId;
 	topWindow = winId;
+
+	console.log(topWindow);
+	console.log(document.getElementById(topWindow).style.zIndex)
 }
 
 function deleteWin(winId) {
@@ -67,6 +73,8 @@ function deleteWin(winId) {
 	else {
 		topWindow = previousWindow.id;
 		previousWindow.dataset.next = "null";
+		console.log(topWindow);
+		console.log(document.getElementById(topWindow).style.zIndex)
 	}
 }
 
@@ -151,7 +159,7 @@ function createWindow() {
 }
 
 // create functionality for taskbar icons
-function createTbIcon () {
+function createTbIcon() {
 	document.querySelectorAll(".new-tb-icon").forEach(tbIcon => {
 		tbIcon.classList.remove("new-tb-icon");
 		tbIcon.classList.add("tb-icon");
@@ -166,10 +174,18 @@ function createTbIcon () {
 
 function createTn (winId) {
 	const window = document.getElementById(winId);
+
 	document.querySelectorAll(".new-tnimg").forEach(tn => {
+		const img = tn.firstElementChild;
+
 		tn.classList.remove("new-tnimg");
 		tn.classList.add("tnimg");
 		tn.dataset.forwinid = winId;
+		html2canvas(document.getElementById(winId)).then(
+			canvas => {
+				img.src = canvas.toDataURL("image/png");
+			}
+		);
 		
 	    tn.addEventListener('click', () => {
 			deleteWin(winId);
@@ -179,6 +195,7 @@ function createTn (winId) {
 			}
 	    });
 	});
+	// https://api.apiflash.com/v1/urltoimage?access_key=df75cefd72b7407e96f4ff077e8316bc&url=https%3A%2F%2Fsvtstickypiston.github.io%2FtbOS%2Fprojects&width=434&height=324
 }
 
 $( function() {
@@ -338,16 +355,6 @@ function workWindow() {
 	
 	createTaskbar("work");
 	createWindow();
-}
-
-function hideAll () {
-    document.querySelectorAll('div[role="tabpanel"]').forEach(tabpanel=>{
-        tabpanel.style.display = "none";
-    });
-
-    document.querySelectorAll('.tab').forEach(tab=>{
-        tab.setAttribute("aria-selected", false);
-    });
 }
 
 function clearScreen() {
