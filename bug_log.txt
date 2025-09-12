@@ -1,0 +1,7 @@
+Bug Fix log:
+
+####################
+Issue: Window manager losing track of the top window
+Description: When opening a window from the taskbar it sometimes doesn't put the z-index of the window to the front correctly.
+Solution: -
+####################
