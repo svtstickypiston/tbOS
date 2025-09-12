@@ -277,6 +277,9 @@ function musicWindow() {
                   <button aria-label="Any Text" class="new-close"></button>
               </div>
           </div>
+		  <div class="window-body">
+			<embed src="music.html">
+		  </div>
       </div>
       `
     );
